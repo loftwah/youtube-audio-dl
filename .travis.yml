@@ -1,0 +1,22 @@
+dist: xenial
+language: python
+cache: pip
+env:
+  global:
+    - DATABASE_NAME=youtubeadl
+    - DATABASE_USER=youtubeadl
+    - DATABASE_PASSWORD=youtubeadl
+services:
+  - postgresql
+before_script:
+  - psql -c "create user youtubeadl with password 'youtubeadl';" -U postgres
+  - psql -c "alter user youtubeadl CREATEDB;" -U postgres
+  - psql -c 'create database youtubeadl with owner youtubeadl;' -U postgres
+python:
+  - "3.7"
+# command to install dependencies
+install:
+  - pip install -r requirements_local.txt
+# command to run tests
+script: 
+  - python manage.py test
