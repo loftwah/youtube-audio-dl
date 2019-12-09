@@ -3,7 +3,7 @@ from youtubeadl.settings.base import *
 
 INSTALLED_APPS += ('debug_toolbar',)
 
-MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware', )
+MIDDLEWARE += ('debug_toolbar.middleware.DebugToolbarMiddleware', )
 
 # The Django Debug Toolbar will only be shown to these client IPs.
 INTERNAL_IPS = (
